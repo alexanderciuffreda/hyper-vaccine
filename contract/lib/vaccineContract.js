@@ -31,7 +31,7 @@ class MyVaccineContract extends Contract{
 
         persons.push(person1);
         persons.push(person2);
-        //add the voters to the world state, the election class checks for registered voters
+        //add the persins to the world state
         await ctx.stub.putState(person1.personID, Buffer.from(JSON.stringify(person1))); 
         await ctx.stub.putState(person2.personID, Buffer.from(JSON.stringify(person2)));
 
