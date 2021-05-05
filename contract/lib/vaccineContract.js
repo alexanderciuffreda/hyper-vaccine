@@ -11,7 +11,6 @@ const vaccineData = JSON.parse(vaccineDataJson);
 //import our file which contains our constructors and auxiliary function
 let Vaccination = require('./Vaccination.js');
 let Person = require('./Person.js');
-//let Vaccine = require('./Vaccine.js');
 
 
 class MyVaccineContract extends Contract{
@@ -32,7 +31,7 @@ class MyVaccineContract extends Contract{
 
         persons.push(person1);
         persons.push(person2);
-        //add the persins to the world state
+        //add the persons to the world state
         await ctx.stub.putState(person1.personID, Buffer.from(JSON.stringify(person1))); 
         await ctx.stub.putState(person2.personID, Buffer.from(JSON.stringify(person2)));
 
@@ -70,16 +69,28 @@ class MyVaccineContract extends Contract{
     //doctorID
     //batchID
 
+    /**
+     * 
+     * @param {*} ctx 
+     * @param {*} args - Person ID, Vaccine Name, Doctor ID, Batch ID
+     * @returns 
+     */
+
     async vaccinatePerson(ctx, args){
-        args = JSON.parse(args);
-        let personID = args.personID;
-        personAsset = await this.readMyAsset(ctx, personID);
-        
-        let newPerson = new Person(personAsset.personID, per)
-        let votableAsBytes = await ctx.stub.getState(votableId);
+      args = JSON.parse(args);
+      let personID = args.personID;
+      personAsset = await this.readMyAsset(ctx, personID);
+      // create person object from worldstate response
+      let newPerson = new Person(personAsset.personID, personAsset.personID, personAsset.firstName, personAsset.lastName, personAsset.dateOfBirth, personAsset.type, personAsset.email, personAsset.phone);
 
-        
+      //create vaccination
+      newVaccination = this.createVaccination(args.vaccineName, args.doctorID, args.batchID);
+      newPerson.vaccinations.push(newVaccination);
 
+      //update person in world state
+      await ctx.stub.putState(newPerson.personID, Buffer.from(JSON.stringify(newPerson)));
+      let response = `Person with personID ${newPerson.personID} is vaccinated and updated in the world state`;
+      return response;
 
     }
 
@@ -116,3 +127,4 @@ class MyVaccineContract extends Contract{
 
 
 }
+module.exports = MyVaccineContract;

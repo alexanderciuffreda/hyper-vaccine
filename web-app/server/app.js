@@ -1,4 +1,7 @@
 'use strict';
+//swagger imports
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,6 +24,8 @@ const config = JSON.parse(configJSON);
 
 //use this identity to query
 const appAdmin = config.appAdmin;
+// swagger endpoint
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 //get all assets in world state
 app.get('/queryAll', async (req, res) => {
