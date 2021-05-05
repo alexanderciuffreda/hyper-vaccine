@@ -13,7 +13,7 @@ let Vaccination = require('./Vaccination.js');
 let Person = require('./Person.js');
 
 
-class MyAssetContract extends Contract{
+class MyVaccineContract extends Contract{
     /**
      * this function creates initial data and gets application ready
      * @param ctx context of transaction
@@ -21,7 +21,7 @@ class MyAssetContract extends Contract{
      */
     async init(ctx){
         console.log("init method called");
-
+        
         let persons = [];
 
         // create persons
@@ -32,7 +32,7 @@ class MyAssetContract extends Contract{
         persons.push(person1);
         persons.push(person2);
         //add the persons to the world state
-        await ctx.stub.putState(person1.personID, Buffer.from(JSON.stringify(person1)));
+        await ctx.stub.putState(person1.personID, Buffer.from(JSON.stringify(person1))); 
         await ctx.stub.putState(person2.personID, Buffer.from(JSON.stringify(person2)));
 
     }
@@ -44,7 +44,7 @@ class MyAssetContract extends Contract{
     * Creates a person in the world state, based on the args given.
     *
     * @param args.personID - id from ID
-    * @param args.firstName
+    * @param args.firstName 
     * @param args.lastName
     * @param args.dateOfBirth
     * @param args.type
@@ -70,10 +70,10 @@ class MyAssetContract extends Contract{
     //batchID
 
     /**
-     *
-     * @param {*} ctx
+     * 
+     * @param {*} ctx 
      * @param {*} args - Person ID, Vaccine Name, Doctor ID, Batch ID
-     * @returns
+     * @returns 
      */
 
     async vaccinatePerson(ctx, args){
@@ -105,7 +105,7 @@ class MyAssetContract extends Contract{
    * readMyAsset
    *
    * Reads a key-value pair from the world state, based on the key given.
-   *
+   *  
    * @param myAssetId - the key of the asset to read
    * @returns - nothing - but reads the value in the world state
    */
@@ -127,4 +127,4 @@ class MyAssetContract extends Contract{
 
 
 }
-module.exports = MyAssetContract;
+module.exports = MyVaccineContract;

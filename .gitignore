@@ -1,2 +1,4 @@
-/Users/alexander/git-debug/hyper-vaccine/web-app/server/node_modules
-/Users/alexander/git-debug/hyper-vaccine/web-app/server/node_modules/
+contract/node_modules
+web-app/server/node_modules
+contract/package-lock.json
+web-app/server/package-lock.json
