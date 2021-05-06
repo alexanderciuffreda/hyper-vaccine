@@ -1,3 +1,5 @@
+'use strict';
+
 class Vaccination{
     /**
      * If a person is vaccinated a this object is appended to the person object
@@ -15,8 +17,6 @@ class Vaccination{
         return this;
     }
 
-    createVaccination(){
-        
-    }
+
 }
 module.exports = Vaccination;

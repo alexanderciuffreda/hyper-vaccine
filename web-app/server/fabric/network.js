@@ -57,7 +57,7 @@ exports.connectToNetwork = async function (userName) {
 
     console.log('Connected to mychannel. ');
     // Get the contract we have installed on the peer
-    const contract = await network.getContract('vaccineContract'); //CONTRACT NAME
+    const contract = await network.getContract('smart-contract-development-v3'); //CONTRACT NAME refers to name in package.json in contract
 
 
     let networkObj = {

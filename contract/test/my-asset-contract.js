@@ -7,6 +7,8 @@
 const { ChaincodeStub, ClientIdentity } = require('fabric-shim');
 const { MyAssetContract } = require('..');
 const winston = require('winston');
+let Person = require('../lib/Person.js');
+//let Vaccination = require('../lib/Vaccination.js');
 
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
@@ -88,6 +90,24 @@ describe('MyAssetContract', () => {
 
         it('should throw an error for a my asset that does not exist', async () => {
             await contract.updateMyAsset(ctx, '1003', 'my asset 1003 new value').should.be.rejectedWith(/The my asset 1003 does not exist/);
+        });
+
+    });
+
+    describe('#Person', async () => {
+
+        it('Person object should be created successfully, with all correct properties', async () => {
+            let person = new Person('12345', 'Fixie', 'Hartmann', '01012001','patient','fixie@web.de', '015893655487');
+            person.should.haveOwnProperty('personID');
+            person.should.haveOwnProperty('firstName');
+            person.should.haveOwnProperty('lastName');
+            person.should.haveOwnProperty('dateOfBirth');
+            person.should.haveOwnProperty('vaccinations');
+            person.should.haveOwnProperty('type');
+            person.should.haveOwnProperty('email');
+            person.should.haveOwnProperty('phone');
+
+
         });
 
     });
