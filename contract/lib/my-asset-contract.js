@@ -70,9 +70,7 @@ class MyAssetContract extends Contract {
         let response = `Person with personID ${newPerson.personID} is updated in the world state`;
         return response;
     }
-    //vaccineName
-    //doctorID
-    //batchID
+
 
     /**
      *
@@ -86,7 +84,8 @@ class MyAssetContract extends Contract {
         let personID = args.personID;
         let personAsset = await this.readMyAsset(ctx, personID);
         // create person object from worldstate response
-        let newPerson = new Person(personAsset.personID, personAsset.personID, personAsset.firstName, personAsset.lastName, personAsset.dateOfBirth, personAsset.type, personAsset.email, personAsset.phone);
+        //personID, firstName, lastName, dateOfBirth, type, email, phone
+        let newPerson = new Person(personAsset.personID, personAsset.firstName, personAsset.lastName, personAsset.dateOfBirth, personAsset.type, personAsset.email, personAsset.phone, personAsset.vaccinations);
 
         //create vaccination
         let newVaccination = await this.createVaccination(args.vaccineName, args.doctorID, args.batchID);
