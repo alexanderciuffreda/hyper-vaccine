@@ -111,6 +111,35 @@ describe('MyAssetContract', () => {
         });
 
     });
+    describe('#Vaccination', async () => {
+
+        it('Vaccination object should be created successfully', async () => {
+            let person = new Person('12345', 'Fixie', 'Hartmann', '01012001','patient','fixie@web.de', '015893655487');
+            person.should.haveOwnProperty('personID');
+            person.should.haveOwnProperty('firstName');
+            person.should.haveOwnProperty('lastName');
+            person.should.haveOwnProperty('dateOfBirth');
+            person.should.haveOwnProperty('vaccinations');
+            person.should.haveOwnProperty('type');
+            person.should.haveOwnProperty('email');
+            person.should.haveOwnProperty('phone');
+            let newVaccination = await contract.createVaccination('Vaccine Astra Zeneca', '12345', '1111');
+            console.log('in test newVaccination:');
+            console.log(newVaccination);
+
+            //newVaccination.should.haveOwnProperty('vaccineName');
+            //newVaccination.should.haveOwnProperty('doctorID');
+            //newVaccination.should.haveOwnProperty('batchID');
+            console.log('1. Vaccinations Array before:');
+            console.log(person.vaccinations);
+            person.vaccinations.push(newVaccination);
+            console.log('2. Vaccinations Array after:');
+            console.log(person.vaccinations);
+            console.log('3. #####################');
+
+        });
+
+    });
 
     describe('#deleteMyAsset', () => {
 

@@ -89,7 +89,9 @@ class MyAssetContract extends Contract {
         let newPerson = new Person(personAsset.personID, personAsset.personID, personAsset.firstName, personAsset.lastName, personAsset.dateOfBirth, personAsset.type, personAsset.email, personAsset.phone);
 
         //create vaccination
-        let newVaccination = this.createVaccination(args.vaccineName, args.doctorID, args.batchID);
+        let newVaccination = await this.createVaccination(args.vaccineName, args.doctorID, args.batchID);
+        console.log('newVaccination in create vaccination:');
+        console.log(newVaccination);
         newPerson.vaccinations.push(newVaccination);
 
         //update person in world state
@@ -100,9 +102,9 @@ class MyAssetContract extends Contract {
     }
 
     async createVaccination(vaccineName, doctorID, batchID){
-        let newVaccination = await Vaccination(vaccineName, doctorID, batchID);
+        let newVaccination = await new Vaccination(vaccineName, doctorID, batchID);
+        console.log(newVaccination);
         return newVaccination;
-
     }
 
 

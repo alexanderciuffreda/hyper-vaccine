@@ -10,7 +10,7 @@ class Vaccination{
      */
     constructor(vaccineName, doctorID, batchID){
         this.vaccineName = vaccineName;
-        this.vaccinationDate = new Date.now.toString();
+        this.vaccinationDate = new Date().toLocaleDateString();
         this.doctorID = doctorID;
         this.batchID = batchID;
         this.vaccinationID;

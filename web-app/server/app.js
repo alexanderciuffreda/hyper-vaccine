@@ -86,6 +86,11 @@ app.post('/registerPerson', async (req, res) => {
 
 //vaccinatePerson -> Vaccinates the person by adding the vaccination to the “vaccinations” list in the Person object and then pushing the “new” Person object to the world state. 
 app.post('/vaccinatePerson', async (req, res) => {
+    console.log('req:');
+    console.log(req);
+    console.log('res:');
+    console.log(res);
+    console.log('personID:' ,req.body.personID)
     let networkObj = await network.connectToNetwork(req.body.personID);
     console.log('util inspecting');
     console.log(util.inspect(networkObj));

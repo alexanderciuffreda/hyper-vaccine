@@ -129,7 +129,7 @@ exports.invoke = async function (networkObj, isQuery, func, args) {
         console.log(util.inspect(args));
 
         console.log('before submit');
-        console.log(util.inspect(networkObj));
+        console.log('123', util.inspect(networkObj));
         let response = await networkObj.contract.submitTransaction(func, args);
         console.log('after submit');
 
@@ -214,7 +214,7 @@ exports.registerPerson = async function (personID, firstName, lastName, dateOfBi
     // Register the user, enroll the user, and import the new identity into the wallet.
     const secret = await ca.register({ affiliation: '', enrollmentID: personID, role: 'client' }, adminIdentity);
 
-    const enrollment = await ca.enroll({ enrollmentID: voterId, enrollmentSecret: secret });
+    const enrollment = await ca.enroll({ enrollmentID: personID, enrollmentSecret: secret });
     const userIdentity = await X509WalletMixin.createIdentity(orgMSPID, enrollment.certificate, enrollment.key.toBytes());
     await wallet.import(personID, userIdentity);
     console.log(`Successfully registered person ${firstName} ${lastName}. Use personID ${personID} to login above.`);
