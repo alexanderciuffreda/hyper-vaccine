@@ -131,5 +131,35 @@ app.post('/queryByKey', async (req, res) => {
   }
 });
 
+//used as a way to login the voter to the app and make sure they haven't voted before 
+app.post('/validatePerson', async (req, res) => {
+  console.log('req.body: ');
+  console.log(req.body);
+  let networkObj = await network.connectToNetwork(req.body.personID);
+  console.log('networkobj: ');
+  console.log(util.inspect(networkObj));
+
+  if (networkObj.error) {
+    res.send(networkObj);
+  }
+
+  let invokeResponse = await network.invoke(networkObj, true, 'readMyAsset', req.body.personID);
+  if (invokeResponse.error) {
+    res.send(invokeResponse);
+  } else {
+    console.log('after network.invoke ');
+    let parsedResponse = await JSON.parse(invokeResponse);
+    //if (parsedResponse.ballotCast) {
+    //  let response = {};
+    //  response.error = 'This Person has already cast a ballot, we cannot allow double-voting!';
+    //  res.send(response);
+    //}
+    // let response = `Voter with voterId ${parsedResponse.voterId} is ready to cast a ballot.` 
+    console.log("PARSED RESPONSE:")
+    console.log(parsedResponse) 
+    res.send(parsedResponse);
+  }
+
+});
 
 app.listen(process.env.PORT || 8081);

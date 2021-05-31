@@ -2,8 +2,8 @@
     "connection_file": "ibpConnection.json",
     "appAdmin": "app-admin",
     "appAdminSecret": "app-adminpw",
-    "orgMSPID": "votermsp",
-    "caName": "https://159.122.179.150:31757",
+    "orgMSPID": "vaccinationmsp",
+    "caName": "https://159.122.183.201:30909",
     "userName": "V1",
     "gatewayDiscovery": { "enabled": true, "asLocalhost": false }
   }

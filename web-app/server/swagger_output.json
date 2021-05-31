@@ -112,6 +112,27 @@
         ],
         "responses": {}
       }
+    },
+    "/validatePerson": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "personID": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "definitions": {}

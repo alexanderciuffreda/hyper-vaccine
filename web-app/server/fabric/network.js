@@ -57,7 +57,7 @@ exports.connectToNetwork = async function (userName) {
 
     console.log('Connected to mychannel. ');
     // Get the contract we have installed on the peer
-    const contract = await network.getContract('smart-contract-development-v3'); //CONTRACT NAME refers to name in package.json in contract
+    const contract = await network.getContract('vaccination-contract'); //CONTRACT NAME refers to name in package.json in contract
 
 
     let networkObj = {
@@ -104,9 +104,12 @@ exports.invoke = async function (networkObj, isQuery, func, args) {
         return response;
         
       } else {
-
+        console.log("1");
         let response = await networkObj.contract.evaluateTransaction(func);
+        console.log("2");
         console.log(response);
+        console.log("3");
+
         console.log(`Transaction ${func} without args has been evaluated`);
   
         await networkObj.gateway.disconnect();

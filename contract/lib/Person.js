@@ -25,7 +25,7 @@ class Person{
     *
     * @returns person object
     */
-    constructor(personID, firstName, lastName, dateOfBirth, type, email, phone, vaccinations = []){
+    constructor(personID, firstName, lastName, dateOfBirth, type = "patient", email, phone, vaccinations = []){
         // check if person is valid
         if (this.validatePerson(personID)){
             this.personID = personID;
