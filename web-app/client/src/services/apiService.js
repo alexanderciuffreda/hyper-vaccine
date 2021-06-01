@@ -20,9 +20,19 @@ export default{
         personID: personID
       }) 
     },
+    
     queryByKey(key) {
       return Api().post('queryByKey', {
         key: key
+      }) 
+    },
+
+    vaccinatePerson(personID, vaccineName, batchID, doctorID) {
+      return Api().post('vaccinatePerson', {
+        personID: personID,
+        vaccineName: vaccineName,
+        batchID: batchID,
+        doctorID: doctorID
       }) 
     },
 }

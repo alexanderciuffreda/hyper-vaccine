@@ -4,7 +4,8 @@
     <h2>Vaccination portal based on IBM Hyperledger Blockchain</h2>
     <h3>If you are a registered person, enter your ID below</h3>
     <!--span><b>{{ response }}</b></span><br /-->
-    <form v-on:submit="validatePerson">
+
+   <form v-on:submit="validatePerson">
       <input type="text" v-model="loginData.personID" placeholder="Enter Person ID">
       <br>
 
@@ -101,14 +102,19 @@ export default {
           // console.log(apiResponse);
           console.log(apiResponse.data.error);
           this.loginReponse = apiResponse.data.error;
+        } else if (apiResponse.data.type == "doctor") {
+            console.log(apiResponse);
+            console.log("Doctor");
+            this.$router.push({
+              name: "Doctor",
+              params : {
+                propDoctorID : apiResponse.data.personID
+              }
+            });
         } else if (apiResponse.data.type == "patient") {
             console.log(apiResponse);
             console.log("Patient");
             this.$router.push("Patient");
-        } else if (apiResponse.data.type == "doctor") {
-            console.log(apiResponse);
-            console.log("Doctor");
-            this.$router.push("Doctor");
         }
 
         console.log(apiResponse);

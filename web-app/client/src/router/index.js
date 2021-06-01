@@ -14,22 +14,25 @@ export default new Router({
     {
       path: '/queryAll',
       name: 'QueryAll',
-      component: QueryAll
+      component: QueryAll,
     },
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
+      props: { personId: false }
     },
     {
       path: '/doctor',
       name: 'Doctor',
-      component: Doctor
+      component: Doctor,
+      props: true
     },
     {
       path: '/patient',
       name: 'Patient',
-      component: Patient
+      component: Patient,
+      props: true
     }
   ]
 })

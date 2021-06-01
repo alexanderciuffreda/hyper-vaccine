@@ -1,10 +1,15 @@
 <template>
+<b-container fluid>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">          
-        <router-link to="/QueryAll">QueryAll</router-link>
-        <router-link to="/Home">Home</router-link>
-      <router-view></router-view>
+
+      <img alt="Vue logo" src="./assets/hyperledger.png" style="width:400px;height:400px;">
+
+        
+        <!-- <router-link to="/QueryAll">QueryAll</router-link>
+        <router-link to="/Home">Home</router-link> -->
+        <router-view></router-view>
     </div>
+  </b-container>
 </template>
 <script>
 
